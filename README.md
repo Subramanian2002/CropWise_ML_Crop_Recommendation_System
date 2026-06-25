@@ -209,7 +209,7 @@ Add screenshots here.
 
 ### 🌱 Crop Prediction
 
-<img width="1038" height="577" alt="image" src="https://github.com/user-attachments/assets/822f5273-e5f5-4ed2-a57f-beb7d2ec5ad0" />
+<img width="1037" height="502" alt="image" src="https://github.com/user-attachments/assets/c1c4edde-1165-4901-8e5b-5fe921b901e9" />
 
 ### 📊 Dashboard
 
