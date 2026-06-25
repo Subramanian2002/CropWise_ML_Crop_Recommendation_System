@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4">Admin Panel</h2>
+
+    <!-- Users Table -->
+    <h4>Registered Users</h4>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.role == 'admin' %}
+                        <span class="badge bg-success">{{ user.role }}</span>
+                    {% else %}
+                        <span class="badge bg-primary">{{ user.role }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Predictions Table -->
+    <h4 class="mt-5">All Predictions</h4>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Crop</th>
+                <th>Inputs</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pred in predictions %}
+            <tr>
+                <td>{{ pred.id }}</td>
+                <td>{{ pred.user.username }}</td>
+                <td>{{ pred.result }}</td>
+                <td>
+                    N: {{ pred.nitrogen }}, P: {{ pred.phosphorus }}, K: {{ pred.potassium }},
+                    Temp: {{ pred.temperature }}, Humidity: {{ pred.humidity }},
+                    pH: {{ pred.ph }}, Rainfall: {{ pred.rainfall }}
+                </td>
+                <td>{{ pred.date.strftime("%Y-%m-%d %H:%M") }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

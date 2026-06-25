@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | CropWise{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="min-height: 85vh; background: #f9fdf9;">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-success">🌿 Welcome to Your Dashboard</h2>
+        <p class="text-muted">Here’s your recent crop recommendation history.</p>
+    </div>
+
+    <!-- Recommendation History -->
+    <div class="mx-auto" style="max-width: 800px;">
+        {% if predictions %}
+            {% for pred in predictions %}
+            <div class="card mb-4 shadow-sm border-0" style="border-radius: 1rem;">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="fw-bold">
+                                Recommendation from <span class="text-muted fw-normal">{{ pred.date.strftime('%Y-%m-%d %H:%M') }}</span>
+                            </h5>
+                            <p class="mb-2 text-secondary">
+                                <strong>Inputs:</strong> 
+                                N: {{ pred.nitrogen }}, P: {{ pred.phosphorus }}, K: {{ pred.potassium }}, 
+                                Temp: {{ pred.temperature }}°C, Humidity: {{ pred.humidity }}%, 
+                                pH: {{ pred.ph }}, Rainfall: {{ pred.rainfall }}mm
+                            </p>
+                            <h6 class="fw-semibold">
+                                Recommended Crop: <span class="text-success">{{ pred.result }}</span>
+                            </h6>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <img src="{{ url_for('static', filename='crops/' ~ pred.result.lower() ~ '.webp') }}" 
+                                 alt="{{ pred.result }}" width="100" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-center text-muted">No predictions yet. Enter your soil and climate data on the home page!</p>
+        {% endif %}
+
+        <!-- Footer -->
+        <div class="text-center mt-4">
+            <a href="{{ url_for('home') }}" class="btn btn-outline-success fw-semibold px-4 rounded-pill">
+                ← Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

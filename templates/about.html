@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}About | CropWise{% endblock %}
+
+{% block content %}
+<main class="container page-section my-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2>Our Mission</h2>
+            <p>CropWise is a mini-project developed by an MCA student at SRM College. Our mission is to bridge the gap between traditional farming and modern technology. By leveraging a machine learning model, we provide farmers with reliable and scientific crop recommendations, helping them maximize their yield and profitability.</p>
+            <p>This system analyzes key environmental factors—such as soil nutrient levels (Nitrogen, Phosphorus, Potassium), temperature, humidity, pH, and rainfall—to predict the most suitable crop for a given piece of land.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="https://images.pexels.com/photos/4484080/pexels-photo-4484080.jpeg" class="img-fluid rounded shadow" alt="Farming Technology">
+        </div>
+    </div>
+
+    <div class="row align-items-center mt-5 pt-5">
+        <div class="col-md-6 order-md-2">
+            <h2>Technology Stack</h2>
+            <p>This project is built using a combination of web technologies and data science principles:</p>
+            <ul>
+                <li><strong>Front-End:</strong> HTML, CSS, JavaScript with the Bootstrap 5 framework for a responsive user interface.</li>
+                <li><strong>Back-End:</strong> Python with Flask (or Django) to serve the machine learning model.</li>
+                <li><strong>Machine Learning:</strong> A classification model (e.g., Random Forest, SVM) trained on a comprehensive agricultural dataset.</li>
+            </ul>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg" class="img-fluid rounded shadow" alt="Technology Stack">
+        </div>
+    </div>
+</main>
+{% endblock %}
